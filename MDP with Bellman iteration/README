@@ -1,0 +1,41 @@
+M.Haiqal Nabiel
+2255201037
+
+---
+
+### Kasus Perencanaan Stok Toko Menggunakan MDP
+Kasus ini mengasumsikan sebuah toko yang menjual produk di tiga lokasi (State) dengan dua jenis tindakan (Action) yang dapat diambil untuk setiap lokasi:
+
+1. **State (Lokasi Toko)**:
+   - **s1**: Stok Produk di Lokasi 1.
+   - **s2**: Stok Produk di Lokasi 2.
+   - **s3**: Produk Terjual (selesai terjual di toko).
+
+2. **Actions**:
+   - **a1**: Menerima pasokan produk di toko.
+   - **a2**: Tidak menerima pasokan di toko.
+
+3. **Transition Probabilities**:
+   - P(s1|s1, a1) = 0.3 (30% produk diterima di stok baru)
+   - P(s1|s1, a2) = 0.7 (70% produk tetap di stok)
+   - P(s2|s2, a1) = 0.4 (40% produk di restock)
+   - P(s2|s2, a2) = 0.6 (60% produk tidak diterima)
+   - P(s3|s1, a1) = 1.0 (produk terjual habis di toko 1)
+   - P(s3|s2, a1) = 0.6 (60% produk terjual habis di toko 2)
+   - P(s3|s3, a1) = 1.0 (produk habis di stok)
+
+4. **Reward Function**:
+   - R(s1, a1, s1) = 5.0 (rewards diterima dari restock produk di toko 1)
+   - R(s1, a1, s2) = 5.0 (rewards diterima dari restock produk di toko 2)
+   - R(s1, a2, s1) = 2.0 (rewards tidak berubah di toko 1)
+   - R(s2, a1, s2) = 3.0 (rewards diterima dari restock produk di toko 2)
+   - R(s2, a1, s3) = 10.0 (rewards produk terjual di toko 2)
+   - R(s3, a1, s3) = 10.0 (rewards produk habis di stok)
+   - R(s3, a2, s3) = 10.0 (produk tetap habis di stok)
+
+5. **Discount Factor (Gamma)**:
+   - 0.9 (memberikan bobot 90% pada nilai masa depan)
+
+Dengan ini, Anda bisa mengimplementasikan program menggunakan kode ini untuk mendapatkan nilai optimal dari kebijakan perencanaan stok yang harus diambil toko pada setiap iterasi selama 10 periode. 
+
+Setelah memasukkan input nilai awal untuk setiap state, program akan menjalankan iterasi perhitungan nilai fungsi dan mencetak hasilnya setiap kali iterasi. Output akhirnya adalah nilai fungsi optimal untuk setiap state setelah 10 iterasi.
